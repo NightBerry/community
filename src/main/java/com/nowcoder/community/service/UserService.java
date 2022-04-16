@@ -1,6 +1,8 @@
 package com.nowcoder.community.service;
 
+import com.nowcoder.community.dao.LoginTicketMapper;
 import com.nowcoder.community.dao.UserMapper;
+import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
@@ -126,7 +128,15 @@ public class UserService implements CommunityConstant {
         }
     }
 
-    public Map<String, Object> login(String username, String password, int expiredSeconds) {
+    /**
+     * 登录功能属于用户行为，所以写在UserService中、
+     *
+     * @param username          用户名
+     * @param password          密码
+     * @param expiredSeconds    Token失效时间
+     * @return                  登录失败情形比较多，所以返回Map
+     */
+    public Map<String, Object> login(String username, String password, long expiredSeconds) {
         Map<String, Object> map = new HashMap<>();
 
         // 空值处理
@@ -147,14 +157,14 @@ public class UserService implements CommunityConstant {
         }
 
         // 验证状态
-        if (user.getStatus() == 0) {
+        if (user.getState() == 0) {
             map.put("usernameMsg", "该账号未激活!");
             return map;
         }
 
         // 验证密码
         password = CommunityUtil.md5(password + user.getSalt());
-        if (!user.getPassword().equals(password)) {
+        if (!user.getPassWord().equals(password)) {
             map.put("passwordMsg", "密码不正确!");
             return map;
         }
