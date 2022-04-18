@@ -1,0 +1,15 @@
+{
+  "properties": [
+    {
+      "name": "community.path.upload",
+      "type": "java.lang.String",
+      "description": "Where the user's header at.",
+      "defaultValue": "D:/ZNowCoderProject/data/upload"
+    },
+    {
+      "name": "community.path.domain",
+      "type": "java.lang.String",
+      "description": "The url to access the project.",
+      "defaultValue": "http://localhost:8080"
+    }
+  ] }

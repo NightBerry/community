@@ -39,6 +39,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
             // 查询凭证
             LoginTicket loginTicket = userService.findLoginTicket(ticket);
             // 检查凭证是否有效
+            // 如果凭证不为空 && 状态有效 && 凭证未过期
             if (loginTicket != null && loginTicket.getStatus() == 0 && loginTicket.getExpired().after(new Date())) {
                 // 根据凭证查询用户
                 User user = userService.findUserById(loginTicket.getUserId());
