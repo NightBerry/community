@@ -14,7 +14,7 @@ public class User {
     private String salt;
     private String email;
     private int type;
-    private int state;
+    private int status;
     private String activationCode;
     private String headerUrl;
     private Date createTime;
@@ -67,12 +67,12 @@ public class User {
         this.type = type;
     }
 
-    public int getState() {
-        return state;
+    public int getStatus() {
+        return status;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getActivationCode() {
@@ -108,7 +108,7 @@ public class User {
                 ", salt='" + salt + '\'' +
                 ", email='" + email + '\'' +
                 ", type=" + type +
-                ", state=" + state +
+                ", status=" + status +
                 ", activationCode='" + activationCode + '\'' +
                 ", headerUrl='" + headerUrl + '\'' +
                 ", createTime=" + createTime +

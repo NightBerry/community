@@ -16,7 +16,10 @@ public class DiscussPost {
      * 0-普通 1-置顶
      */
     private int type;
-    private int state;
+    /**
+     * '0-正常; 1-精华; 2-拉黑;'
+     */
+    private int status;
     private Date createTime;
     private int commentCount;
     private double score;
@@ -61,12 +64,12 @@ public class DiscussPost {
         this.type = type;
     }
 
-    public int getState() {
-        return state;
+    public int getStatus() {
+        return status;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {
@@ -101,7 +104,7 @@ public class DiscussPost {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", type=" + type +
-                ", state=" + state +
+                ", status=" + status +
                 ", createTime=" + createTime +
                 ", commentCount=" + commentCount +
                 ", score=" + score +

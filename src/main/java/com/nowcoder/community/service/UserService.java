@@ -86,7 +86,7 @@ public class UserService implements CommunityConstant {
         user.setSalt(CommunityUtil.generateUUID().substring(0, 5));
         user.setPassWord(CommunityUtil.md5(user.getPassWord() + user.getSalt()));
         user.setType(0);
-        user.setState(0);
+        user.setStatus(0);
         user.setActivationCode(CommunityUtil.generateUUID());
         user.setHeaderUrl(String.format("http://images.nowcoder.com/head/%dt.png"
                 , new Random().nextInt(1000)));
@@ -118,7 +118,7 @@ public class UserService implements CommunityConstant {
      */
     public int activation(int userId, String code) {
         User user = userMapper.selectById(userId);
-        if (user.getState() == 1) {
+        if (user.getStatus() == 1) {
             return ACTIVATION_REPEAT;
         } else if (user.getActivationCode().equals(code)) {
             userMapper.updateStatus(userId, 1);
@@ -157,7 +157,7 @@ public class UserService implements CommunityConstant {
         }
 
         // 验证状态
-        if (user.getState() == 0) {
+        if (user.getStatus() == 0) {
             map.put("usernameMsg", "该账号未激活!");
             return map;
         }

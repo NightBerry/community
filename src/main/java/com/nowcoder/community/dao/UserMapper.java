@@ -42,10 +42,31 @@ public interface UserMapper {
      */
     int insertUser(User user);
 
-    int updateStatus(int id, int state);
+    /**
+     * 更新用户状态
+     *
+     * @param id        用户id
+     * @param status    新的状态
+     * @return          更新行数
+     */
+    int updateStatus(int id, int status);
 
+    /**
+     * 更新用户头像路径】
+     *
+     * @param id        用户id
+     * @param headerUrl 头像路径
+     * @return          更新行数
+     */
     int updateHeaderUrl(int id, String headerUrl);
 
+    /**
+     * 更新用户密码
+     *
+     * @param id        用户id
+     * @param passWord  新密码
+     * @return          更新行数
+     */
     int updatePassWord(int id, String passWord);
 
 }
