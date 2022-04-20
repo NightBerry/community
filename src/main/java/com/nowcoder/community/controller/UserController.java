@@ -1,5 +1,6 @@
 package com.nowcoder.community.controller;
 
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
@@ -64,6 +65,7 @@ public class UserController {
 
         // 读取文件的后缀，修改图片名字但是不要修改文件格式
         String fileName = headerImage.getOriginalFilename();
+        assert fileName != null;
         String suffix = fileName.substring(fileName.lastIndexOf("."));
         if (StringUtils.isBlank(suffix)) {
             model.addAttribute("error", "文件的格式不正确!");
@@ -102,10 +104,10 @@ public class UserController {
         response.setContentType("image/" + suffix);
         try (
                 FileInputStream fis = new FileInputStream(fileName);
-                OutputStream os = response.getOutputStream();
+                OutputStream os = response.getOutputStream()
         ) {
             byte[] buffer = new byte[1024];
-            int b = 0;
+            int b;
             while ((b = fis.read(buffer)) != -1) {
                 os.write(buffer, 0, b);
             }
