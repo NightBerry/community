@@ -33,7 +33,11 @@ public interface DiscussPostMapper {
      */
     int selectDiscussPostRows(@Param("userId") int userId);
 
-
-
-
+    /**
+     * 插入一条帖子
+     *
+     * @param discussPost   要插入的帖子
+     * @return              更新的行数
+     */
+    int insertDiscussPost(DiscussPost discussPost);
 }
