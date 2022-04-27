@@ -40,4 +40,22 @@ public interface DiscussPostMapper {
      * @return              更新的行数
      */
     int insertDiscussPost(DiscussPost discussPost);
+
+    /**
+     * 根据帖子id查询整条帖子信息
+     *
+     * @param id    id
+     * @return      帖子信息
+     */
+    DiscussPost selectDiscussPostById(int id);
+
+    /**
+     * 更新评论数
+     *
+     * @param id
+     * @param commentCount
+     * @return
+     */
+    int updateCommentCount(int id, int commentCount);
+
 }

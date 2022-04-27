@@ -51,6 +51,12 @@ public class DiscussPostService {
         return discussPostMapper.insertDiscussPost(post);
     }
 
+    /**
+     * 业务层根据id查询帖子
+     *
+     * @param id    id
+     * @return      帖子
+     */
     public DiscussPost findDiscussPostById(int id) {
         return discussPostMapper.selectDiscussPostById(id);
     }
