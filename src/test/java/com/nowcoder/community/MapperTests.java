@@ -36,7 +36,7 @@ public class MapperTests {
 
     @Test
     public void testSelectUser() {
-        User user = userMapper.selectById(101);
+        User user;
 //        System.out.println(user);
         user = userMapper.selectByName("niuke");
         System.out.println(user);
