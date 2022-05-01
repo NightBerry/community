@@ -52,9 +52,9 @@ public interface DiscussPostMapper {
     /**
      * 更新评论数
      *
-     * @param id
-     * @param commentCount
-     * @return
+     * @param id            帖子id
+     * @param commentCount  评论数量
+     * @return              更新的行数
      */
     int updateCommentCount(int id, int commentCount);
 
