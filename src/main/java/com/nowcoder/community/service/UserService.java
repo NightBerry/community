@@ -248,4 +248,16 @@ public class UserService implements CommunityConstant {
 
         return map;
     }
+
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @param name  用户名
+     * @return      用户
+     */
+    public User findUserByName(String name) {
+
+        return userMapper.selectByName(name);
+
+    }
 }

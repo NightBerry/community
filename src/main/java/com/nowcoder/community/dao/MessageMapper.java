@@ -68,7 +68,7 @@ public interface MessageMapper {
     /**
      * 修改消息的状态
      *
-     * @param ids
+     * @param ids       多个id
      * @param status    新状态
      * @return          更新行数
      */
