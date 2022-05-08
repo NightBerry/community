@@ -38,7 +38,7 @@ public class LikeController {
         long likeCount = likeService.findEntityLikeCount(entityType, entityId);
         // 状态
         int likeStatus = likeService.findEntityLikeStatus(user.getId(), entityType, entityId);
-        // 返回的结果
+        // 返回的结果dis
         Map<String, Object> map = new HashMap<>(16);
         map.put("likeCount", likeCount);
         map.put("likeStatus", likeStatus);
