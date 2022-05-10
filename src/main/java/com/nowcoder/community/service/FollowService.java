@@ -139,7 +139,14 @@ public class FollowService implements CommunityConstant {
         return list;
     }
 
-    // 查询某用户的粉丝
+    /**
+     * 查询某用户的粉丝
+     *
+     * @param userId    用户id
+     * @param offset    页数
+     * @param limit     每页显示数
+     * @return          粉丝列表
+     */
     public List<Map<String, Object>> findFollowers(int userId, int offset, int limit) {
         String followerKey = RedisKeyUtil.getFollowerKey(ENTITY_TYPE_USER, userId);
         Set<Integer> targetIds = redisTemplate.opsForZSet().reverseRange(followerKey, offset, offset + limit - 1);
