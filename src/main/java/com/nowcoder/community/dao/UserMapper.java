@@ -21,10 +21,10 @@ public interface UserMapper {
     /**
      * 根据用户名查询用户信息
      *
-     * @param userName  用户名
+     * @param username  用户名
      * @return          用户信息
      */
-    User selectByName(String userName);
+    User selectByName(String username);
 
     /**
      * 根据邮箱查询用户信息
@@ -52,7 +52,7 @@ public interface UserMapper {
     int updateStatus(int id, int status);
 
     /**
-     * 更新用户头像路径】
+     * 更新用户头像路径
      *
      * @param id        用户id
      * @param headerUrl 头像路径
@@ -64,9 +64,9 @@ public interface UserMapper {
      * 更新用户密码
      *
      * @param id        用户id
-     * @param passWord  新密码
+     * @param password  新密码
      * @return          更新行数
      */
-    int updatePassWord(int id, String passWord);
+    int updatePassword(int id, String password);
 
 }

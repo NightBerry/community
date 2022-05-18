@@ -65,11 +65,11 @@ public class UserService implements CommunityConstant {
         if (user == null) {
             throw new IllegalArgumentException("参数不能为空!");
         }
-        if (StringUtils.isBlank(user.getUserName())) {
+        if (StringUtils.isBlank(user.getUsername())) {
             map.put("usernameMsg", "账号不能为空!");
             return map;
         }
-        if (StringUtils.isBlank(user.getPassWord())) {
+        if (StringUtils.isBlank(user.getPassword())) {
             map.put("passwordMsg", "密码不能为空!");
             return map;
         }
@@ -79,7 +79,7 @@ public class UserService implements CommunityConstant {
         }
 
         // 验证账号
-        User u = userMapper.selectByName(user.getUserName());
+        User u = userMapper.selectByName(user.getUsername());
         if (u != null) {
             map.put("usernameMsg", "该账号已存在!");
             return map;
@@ -94,7 +94,7 @@ public class UserService implements CommunityConstant {
 
         // 注册用户
         user.setSalt(CommunityUtil.generateUUID().substring(0, 5));
-        user.setPassWord(CommunityUtil.md5(user.getPassWord() + user.getSalt()));
+        user.setPassword(CommunityUtil.md5(user.getPassword() + user.getSalt()));
         user.setType(0);
         user.setStatus(0);
         user.setActivationCode(CommunityUtil.generateUUID());
@@ -175,7 +175,7 @@ public class UserService implements CommunityConstant {
 
         // 验证密码
         password = CommunityUtil.md5(password + user.getSalt());
-        if (!user.getPassWord().equals(password)) {
+        if (!user.getPassword().equals(password)) {
             map.put("passwordMsg", "密码不正确!");
             return map;
         }
@@ -261,14 +261,14 @@ public class UserService implements CommunityConstant {
         // 验证原始密码
         User user = userMapper.selectById(id);
         oldPassword = CommunityUtil.md5(oldPassword + user.getSalt());
-        if (!user.getPassWord().equals(oldPassword)) {
+        if (!user.getPassword().equals(oldPassword)) {
             map.put("oldPasswordMsg", "原密码输入有误!");
             return map;
         }
 
         // 更新密码
         newPassword = CommunityUtil.md5(newPassword + user.getSalt());
-        userMapper.updatePassWord(id, newPassword);
+        userMapper.updatePassword(id, newPassword);
 
         return map;
     }

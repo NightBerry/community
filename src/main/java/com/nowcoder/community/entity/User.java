@@ -9,8 +9,8 @@ import java.util.Date;
 public class User {
 
     private int id;
-    private String userName;
-    private String passWord;
+    private String username;
+    private String password;
     private String salt;
     private String email;
     private int type;
@@ -27,20 +27,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getSalt() {
@@ -103,8 +103,8 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
                 ", email='" + email + '\'' +
                 ", type=" + type +
@@ -114,4 +114,5 @@ public class User {
                 ", createTime=" + createTime +
                 '}';
     }
+
 }

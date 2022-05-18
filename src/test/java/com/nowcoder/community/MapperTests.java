@@ -52,8 +52,8 @@ public class MapperTests {
     @Test
     public void testInsertUser() {
         User user = new User();
-        user.setUserName("test");
-        user.setPassWord("123456");
+        user.setUsername("test");
+        user.setPassword("123456");
         user.setSalt("abc");
         user.setEmail("test@qq.com");
         user.setHeaderUrl("http://www.nowcoder.com/111.png");

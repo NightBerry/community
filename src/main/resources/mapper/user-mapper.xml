@@ -31,7 +31,7 @@
         select
         <include refid="selectFields"></include>
         from user
-        where username = #{userName}
+        where username = #{username}
     </select>
 
     <select id="selectByEmail" resultType="User">
@@ -43,7 +43,7 @@
 
     <insert id="insertUser" parameterType="User" keyProperty="id">
         insert into user (<include refid="insertFields"></include>)
-        values (#{userName}, #{passWord}, #{salt}, #{email}, #{type}, #{status},
+        values (#{username}, #{password}, #{salt}, #{email}, #{type}, #{status},
         #{activationCode}, #{headerUrl}, #{createTime})
     </insert>
     
@@ -55,8 +55,8 @@
         update user set header_url = #{headerUrl} where id = #{id}
     </update>
 
-    <update id="updatePassWord">
-        update user set password = #{passWord} where id = #{id}
+    <update id="updatePassword">
+        update user set password = #{password} where id = #{id}
     </update>
 
 </mapper>

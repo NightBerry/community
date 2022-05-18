@@ -70,9 +70,9 @@ public class AlphaService {
     public Object save1() {
         // 新增用户
         User user = new User();
-        user.setUserName("alpha");
+        user.setUsername("alpha");
         user.setSalt(CommunityUtil.generateUUID().substring(0, 5));
-        user.setPassWord(CommunityUtil.md5("123" + user.getSalt()));
+        user.setPassword(CommunityUtil.md5("123" + user.getSalt()));
         user.setEmail("alpha@qq.com");
         user.setHeaderUrl("http://image.nowcoder.com/head/99t.png");
         user.setCreateTime(new Date());
@@ -86,7 +86,7 @@ public class AlphaService {
         post.setCreateTime(new Date());
         discussPostMapper.insertDiscussPost(post);
 
-        Integer.valueOf("abc");
+//        Integer.valueOf("abc");
 
         return "ok";
     }
@@ -98,9 +98,9 @@ public class AlphaService {
         return transactionTemplate.execute((TransactionCallback<Object>) status -> {
             // 新增用户
             User user = new User();
-            user.setUserName("beta");
+            user.setUsername("beta");
             user.setSalt(CommunityUtil.generateUUID().substring(0, 5));
-            user.setPassWord(CommunityUtil.md5("123" + user.getSalt()));
+            user.setPassword(CommunityUtil.md5("123" + user.getSalt()));
             user.setEmail("beta@qq.com");
             user.setHeaderUrl("http://image.nowcoder.com/head/999t.png");
             user.setCreateTime(new Date());
@@ -114,7 +114,7 @@ public class AlphaService {
             post.setCreateTime(new Date());
             discussPostMapper.insertDiscussPost(post);
 
-            Integer.valueOf("abc");
+//             Integer.valueOf("abc");
 
             return "ok";
         });
