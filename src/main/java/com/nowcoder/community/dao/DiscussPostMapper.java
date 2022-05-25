@@ -20,9 +20,10 @@ public interface DiscussPostMapper {
      * @param userId    后期可查询用户自己发的帖子
      * @param offset    从第几行开始显示帖子
      * @param limit     显示多少帖子，每页的限制
+     * @param orderMode 排序模式：默认0 按照热度1
      * @return          帖子集合
      */
-    List<DiscussPost> selectDiscussPosts(int userId, int offset, int limit);
+    List<DiscussPost> selectDiscussPosts(int userId, int offset, int limit, int orderMode);
 
     /**
      * 查询数据库中帖子总数
@@ -77,7 +78,7 @@ public interface DiscussPostMapper {
     int updateStatus(int id, int status);
 
     /**
-     * 更新帖子权重
+     * 更新帖子权重分数
      *
      * @param id        帖子id
      * @param score     新权重

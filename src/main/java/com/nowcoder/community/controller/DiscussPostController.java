@@ -50,6 +50,13 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    /**
+     * 新增帖子
+     *
+     * @param title     帖子标题
+     * @param content   帖子内容
+     * @return          操作结果
+     */
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String addDiscussPost(String title, String content) {
@@ -73,10 +80,23 @@ public class DiscussPostController implements CommunityConstant {
                 .setEntityId(post.getId());
         eventProducer.fireEvent(event);
 
+        //计算帖子分数
+        String redisKey = RedisKeyUtil.getPostScoreKey();
+        // 不应放在队列里边，比如点赞顺序：A B A C A，会运算重复
+        redisTemplate.opsForSet().add(redisKey,post.getId());
+
         // 报错的情况,将来统一处理.
         return CommunityUtil.getJSONString(0, "发布成功!");
     }
 
+    /**
+     * 点开帖子查看详情页面
+     *
+     * @param discussPostId 帖子id
+     * @param model         模板
+     * @param page          分页
+     * @return              跳转到详情页面
+     */
     @RequestMapping(path = "/detail/{discussPostId}", method = RequestMethod.GET)
     public String getDiscussPost(@PathVariable("discussPostId") int discussPostId, Model model, Page page) {
         // 帖子
