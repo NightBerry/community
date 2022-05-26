@@ -12,9 +12,11 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +38,12 @@ public class EventConsumer implements CommunityConstant {
 
     @Autowired
     private ElasticsearchService elasticsearchService;
+
+    @Value("${wk.image.command}")
+    private String wkImageCommand;
+
+    @Value("${wk.image.storage}")
+    private String wkImageStorage;
 
     /**
      * 消费评论事件
@@ -125,7 +133,7 @@ public class EventConsumer implements CommunityConstant {
      *
      * @param record    分享消息记录
      */
-    /*@KafkaListener(topics = TOPIC_SHARE)
+    @KafkaListener(topics = TOPIC_SHARE)
     public void handleShareMessage(ConsumerRecord record) {
         if (record == null || record.value() == null) {
             logger.error("消息的内容为空!");
@@ -152,9 +160,9 @@ public class EventConsumer implements CommunityConstant {
         }
 
         // 启用定时器,监视该图片,一旦生成了,则上传至七牛云.
-        UploadTask task = new UploadTask(fileName, suffix);
-        Future future = taskScheduler.scheduleAtFixedRate(task, 500);
-        task.setFuture(future);
-    }*/
+//        UploadTask task = new UploadTask(fileName, suffix);
+//        Future future = taskScheduler.scheduleAtFixedRate(task, 500);
+//        task.setFuture(future);
+    }
 
 }
