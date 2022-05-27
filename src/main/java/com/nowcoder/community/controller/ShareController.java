@@ -35,11 +35,11 @@ public class ShareController implements CommunityConstant {
     @Autowired
     private EventProducer eventProducer;
 
-    @Value("${community.path.domain}")
-    private String domain;
+//    @Value("${community.path.domain}")
+//    private String domain;
 
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
+//    @Value("${server.servlet.context-path}")
+//    private String contextPath;
 
     @Value("${wk.image.storage}")
     private String wkImageStorage;
