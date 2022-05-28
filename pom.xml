@@ -18,6 +18,14 @@
 	</properties>
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/com.qiniu/qiniu-java-sdk -->
 		<dependency>
 			<groupId>com.qiniu</groupId>
