@@ -61,8 +61,8 @@ public class DiscussPostService {
                 .build(new CacheLoader<String, List<DiscussPost>>() {
                     @Nullable
                     @Override
-                    public List<DiscussPost> load(String key) throws Exception {
-                        if (key == null || key.length() == 0) {
+                    public List<DiscussPost> load(@NonNull String key) throws Exception {
+                        if (key.length() == 0) {
                             throw new IllegalArgumentException("参数错误!");
                         }
 

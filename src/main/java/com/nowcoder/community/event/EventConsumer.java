@@ -10,7 +10,6 @@ import com.nowcoder.community.service.MessageService;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
 import com.qiniu.common.QiniuException;
-import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.Region;
@@ -92,6 +91,7 @@ public class EventConsumer implements CommunityConstant {
         message.setFromId(SYSTEM_USER_ID);
         message.setToId(event.getEntityUserId());
         message.setConversationId(event.getTopic());
+        message.setStatus(0);
         message.setCreateTime(new Date());
 
         Map<String, Object> content = new HashMap<>(16);
